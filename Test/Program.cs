@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Data;
+using Dapper;
+using Microsoft.Data.SqlClient;
+using Test.Data;
 using Test.Models;
 
 namespace Test
@@ -8,6 +12,13 @@ namespace Test
     {
         static void Main(string[] args)
         {
+            DataContextDapper dapper = new DataContextDapper();
+            string sqlCommand = "SELECT * FROM TutorialAppSchema.Computer";
+
+            Computer result1 = dapper.LoadDataSingle<Computer>(sqlCommand);
+
+            Console.WriteLine(result1.Motherboard);
+
             Computer myComputer = new Computer()
             {
                 Motherboard="Z460",
@@ -18,7 +29,7 @@ namespace Test
                 VideoCard = "RTX 4050"
             };
             Console.WriteLine(myComputer.Motherboard);
-            
+
         }
     }
 }
