@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Amrit Banjade\\Documents\\Office\\Dotnet\\Udemy practice\\DotnetAPIPractice\\Test\\Test.csproj": {}
+    "D:\\DotnetCore\\dotnet-practice\\DotnetAPIPractice\\Test\\Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Amrit Banjade\\Documents\\Office\\Dotnet\\Udemy practice\\DotnetAPIPractice\\Test\\Test.csproj": {
+    "D:\\DotnetCore\\dotnet-practice\\DotnetAPIPractice\\Test\\Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Amrit Banjade\\Documents\\Office\\Dotnet\\Udemy practice\\DotnetAPIPractice\\Test\\Test.csproj",
+        "projectUniqueName": "D:\\DotnetCore\\dotnet-practice\\DotnetAPIPractice\\Test\\Test.csproj",
         "projectName": "Test",
-        "projectPath": "C:\\Users\\Amrit Banjade\\Documents\\Office\\Dotnet\\Udemy practice\\DotnetAPIPractice\\Test\\Test.csproj",
-        "packagesPath": "C:\\Users\\Amrit Banjade\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Amrit Banjade\\Documents\\Office\\Dotnet\\Udemy practice\\DotnetAPIPractice\\Test\\obj\\",
+        "projectPath": "D:\\DotnetCore\\dotnet-practice\\DotnetAPIPractice\\Test\\Test.csproj",
+        "packagesPath": "C:\\Users\\Penahak\\.nuget\\packages\\",
+        "outputPath": "D:\\DotnetCore\\dotnet-practice\\DotnetAPIPractice\\Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Amrit Banjade\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Penahak\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -37,7 +37,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -46,6 +47,14 @@
             "Dapper": {
               "target": "Package",
               "version": "[2.1.35, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[9.0.1, )"
             },
             "microsoft.data.sqlclient": {
               "target": "Package",
@@ -71,12 +80,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.12, 8.0.12]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.12, 8.0.12]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.12, 8.0.12]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.12, 8.0.12]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
