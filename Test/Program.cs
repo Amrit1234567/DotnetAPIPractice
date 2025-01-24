@@ -2,6 +2,8 @@
 using System.Data;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Test.Data;
 using Test.Models;
 
@@ -12,8 +14,12 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            DataContextDapper dapper = new DataContextDapper();
-            string sqlCommand = "SELECT * FROM TutorialAppSchema.Computer";
+            IConfiguration config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+            
+            DataContextDapper dapper = new DataContextDapper(config);
+            string sqlCommand = "SELECT * FROM TutorialAppSchema.Computer WHERE Motherboard = 'Z360'\n";
 
             Computer result1 = dapper.LoadDataSingle<Computer>(sqlCommand);
 
@@ -30,6 +36,14 @@ namespace Test
             };
             Console.WriteLine(myComputer.Motherboard);
 
+            File.WriteAllText("log.txt",sqlCommand);
+
+            using StreamWriter openFile = new("log.txt", append:true);
+
+            openFile.WriteLine(sqlCommand);
+            openFile.Close();
+
+            Console.WriteLine(File.ReadAllText("log.txt"));
         }
     }
 }
