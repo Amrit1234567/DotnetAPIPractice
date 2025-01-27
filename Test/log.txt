@@ -1,3 +1,3 @@
-SELECT * FROM TutorialAppSchema.Computer WHERE Motherboard = 'Z360'
-SELECT * FROM TutorialAppSchema.Computer WHERE Motherboard = 'Z360'
+SELECT * FROM TutorialAppSchema.Computer
+SELECT * FROM TutorialAppSchema.Computer
 

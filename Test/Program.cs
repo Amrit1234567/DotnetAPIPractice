@@ -1,49 +1,32 @@
-﻿using System;
-using System.Data;
-using Dapper;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Test.Data;
-using Test.Models;
-
-namespace Test
+﻿namespace Test
 {
     
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            IConfiguration config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
-                .Build();
-            
-            DataContextDapper dapper = new DataContextDapper(config);
-            string sqlCommand = "SELECT * FROM TutorialAppSchema.Computer WHERE Motherboard = 'Z360'\n";
+            Task firstTask = new Task(()=>{
+                Thread.Sleep(100);
+                Console.WriteLine("Task 1");     
+            });
+            firstTask.Start();
 
-            Computer result1 = dapper.LoadDataSingle<Computer>(sqlCommand);
+            Task secondTask = ConsoleAfterDelayAsync("Task 2", 150);
+            Task thirdTask = ConsoleAfterDelayAsync("Task 3", 50);
 
-            Console.WriteLine(result1.Motherboard);
-
-            Computer myComputer = new Computer()
-            {
-                Motherboard="Z460",
-                HasWifi = true,
-                HasLTE = false,
-                ReleaseDate = DateTime.Now,
-                Price = 1000.47m,
-                VideoCard = "RTX 4050"
-            };
-            Console.WriteLine(myComputer.Motherboard);
-
-            File.WriteAllText("log.txt",sqlCommand);
-
-            using StreamWriter openFile = new("log.txt", append:true);
-
-            openFile.WriteLine(sqlCommand);
-            openFile.Close();
-
-            Console.WriteLine(File.ReadAllText("log.txt"));
+            Console.WriteLine("After the task was created");
+            await firstTask;
         }
+
+        static void ConsoleAfterDelay(string text, int delayTime){
+            Thread.Sleep(delayTime);
+            Console.WriteLine(text);
+        }
+        static async Task ConsoleAfterDelayAsync(string text, int delayTime){
+            await Task.Delay(delayTime);
+            Console.WriteLine(text);
+        }
+
+            
     }
 }
